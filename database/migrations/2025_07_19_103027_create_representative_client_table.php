@@ -12,7 +12,6 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('representative_client', function (Blueprint $table) {
-            $table->id()->autoIncrement();
             $table->foreignId('representative_id')->constrained('representative')->notnull();
             $table->foreignId('client_id')->constrained('client')->notnull();
             $table->timestamps();

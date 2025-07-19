@@ -12,7 +12,7 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('city', function (Blueprint $table) {
-            $table->id()->autoIncrement();
+            $table->id()->autoIncrement()->cascadeOnDelete();
             $table->string('state', 255)->notnull();
             $table->string('city_name', 255)->notnull();
             $table->timestamps();

@@ -12,7 +12,7 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('client', function (Blueprint $table) {
-            $table->id()->autoIncrement();
+            $table->id()->autoIncrement()->cascadeOnDelete();
             $table->string('name', 255)->unique()->notnull();
             $table->char('cpf', 14)->unique()->notnull();
             $table->enum('sex', ['M', 'F']);

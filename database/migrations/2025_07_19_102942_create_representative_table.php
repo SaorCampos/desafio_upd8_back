@@ -12,7 +12,7 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('representative', function (Blueprint $table) {
-            $table->id()->autoIncrement();
+            $table->id()->autoIncrement()->cascadeOnDelete();
             $table->string('name', 255)->unique()->notnull();
             $table->char('cnpj', 18)->unique()->notnull();
             $table->string('address', 255)->notnull();
