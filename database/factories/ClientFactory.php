@@ -24,7 +24,7 @@ class ClientFactory extends Factory
             'name' => fake()->name(),
             'cpf' => fake()->cpf(false),
             'sex' => $randSex,
-            'address' => Str::random(50),
+            'address' => fake()->streetAddress(),
             'city_id' => City::factory()->createOne()->id,
             'date_birth' => fake()->date(),
         ];

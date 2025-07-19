@@ -26,6 +26,7 @@ class ClientUpdateService implements IClientUpdateService
         if(!$city) {
             $cityForCreate = $this->mapCityFromRequest($request);
             $city = $this->cityRepository->createCity($cityForCreate);
+            $city = $this->cityRepository->findCityByName($request->city_name);
         }
         $clientForUpdate = $this->mapClient($request, $city);
         $this->clientRepository->updateClient($request->client_id, $clientForUpdate);
@@ -42,7 +43,7 @@ class ClientUpdateService implements IClientUpdateService
         $city->state = $request->state;
         return $city;
     }
-    private function mapClient(ClientUpdateRequest $request, City|CityDto $city): Client
+    private function mapClient(ClientUpdateRequest $request, CityDto $city): Client
     {
         $client = new Client();
         $client->address = $request->address;

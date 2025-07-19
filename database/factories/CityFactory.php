@@ -25,7 +25,7 @@ class CityFactory extends Factory
         $randState = $states->random();
         return [
             'state' => $randState,
-            'city_name' => Str::random(20),
+            'city_name' => fake()->city,
         ];
     }
 }

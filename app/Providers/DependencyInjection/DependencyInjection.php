@@ -24,6 +24,8 @@ abstract class DependencyInjection
             new AuthDi($app),
             new CityDi($app),
             new ClientDi($app),
+            new RepresentativeDi($app),
+            new RepresentativeClientDi($app),
         ]);
     }
 

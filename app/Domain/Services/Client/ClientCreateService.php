@@ -26,6 +26,7 @@ class ClientCreateService implements IClientCreateService
         if(!$city) {
             $cityForCreate = $this->mapCityFromRequest($request);
             $city = $this->cityRepository->createCity($cityForCreate);
+            $city = $this->cityRepository->findCityByName($request->city_name);
         }
         $clientForCreate = $this->mapClient($request, $city);
         $client = $this->clientRepository->createClient($clientForCreate);
@@ -42,7 +43,7 @@ class ClientCreateService implements IClientCreateService
         $city->state = $request->state;
         return $city;
     }
-    private function mapClient(ClientCreateRequest $request, City|CityDto $city): Client
+    private function mapClient(ClientCreateRequest $request, CityDto $city): Client
     {
         $client = new Client();
         $client->name = $request->name;

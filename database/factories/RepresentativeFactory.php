@@ -19,9 +19,9 @@ class RepresentativeFactory extends Factory
     public function definition(): array
     {
         return [
-            'name' => Str::random(20),
-            'cnpj' => Str::random(18),
-            'address' => Str::random(50),
+            'name' => fake()->company,
+            'cnpj' => fake()->cnpj,
+            'address' => fake()->address,
             'city_id' => City::factory()->createOne()->id,
         ];
     }
