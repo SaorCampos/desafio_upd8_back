@@ -13,11 +13,6 @@ class ListAllCitiesTest extends TestCase
 
     private int $count = 10;
 
-    protected function setUp(): void
-    {
-        parent::setUp();
-    }
-
     /**
      * @test
      */

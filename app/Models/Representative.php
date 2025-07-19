@@ -15,14 +15,4 @@ class Representative extends Entity
         'address',
         'city_id',
     ];
-
-    public function clients(): BelongsToMany
-    {
-        return $this->belongsToMany(Client::class, 'representative_client', 'representative_id', 'client_id');
-    }
-
-    public function city(): BelongsTo
-    {
-        return $this->belongsTo(City::class, 'city_id');
-    }
 }

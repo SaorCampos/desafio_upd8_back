@@ -23,14 +23,27 @@ class CityRepository implements ICityRepository
             dtoClass: CityDto::class
         );
     }
-
     private function getFilters(CityListingRequest $request): array
     {
-        $filters = [];
         $filters = [];
         if (!is_null($request->name)) {
             $filters[] = ['city_name', 'like', '%' . $request->name . '%'];
         }
         return $filters;
+    }
+
+    public function findCityByName(string $name): ?CityDto
+    {
+        $city = City::query()
+            ->where('city_name', $name)
+            ->first();
+        if(!$city) {
+            return null;
+        }
+        return $city->mapTo(CityDto::class);
+    }
+    public function createCity(City $city): City
+    {
+        return City::query()->create($city->toArray());
     }
 }

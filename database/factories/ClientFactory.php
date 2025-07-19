@@ -21,11 +21,12 @@ class ClientFactory extends Factory
         $sex = collect(['M', 'F']);
         $randSex = $sex->random();
         return [
-            'name' => Str::random(20),
-            'cpf' => Str::random(14),
+            'name' => fake()->name(),
+            'cpf' => fake()->cpf(false),
             'sex' => $randSex,
             'address' => Str::random(50),
             'city_id' => City::factory()->createOne()->id,
+            'date_birth' => fake()->date(),
         ];
     }
 }

@@ -23,6 +23,7 @@ abstract class DependencyInjection
         return collect([
             new AuthDi($app),
             new CityDi($app),
+            new ClientDi($app),
         ]);
     }
 

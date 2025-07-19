@@ -14,10 +14,6 @@ class Client extends Entity
         'sex',
         'address',
         'city_id',
+        'date_birth'
     ];
-
-    public function city(): BelongsTo
-    {
-        return $this->belongsTo(City::class, 'city_id');
-    }
 }
