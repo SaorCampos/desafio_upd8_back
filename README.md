@@ -67,14 +67,6 @@ Após criar as chaves, execute o comando abaixo para criar as tabelas no banco d
 php artisan migrate --seed
 ```
 
-<li>Assim estara criado um usuario com</li>
-
-```
-login: admin@admin.com
-senha: 123456
-```
-</li>
-
 </ul>
 
 ### Para iniciar o servidor:
