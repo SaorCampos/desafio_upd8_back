@@ -4,6 +4,8 @@ API consta com dois CURDS simples de entidades: Ciente, Representantes e Cidade.
 
 No projeto abordo diversos temas com foco em Programação Orientada a Objetos (POO), Data Transfers Objects (DTOs).
 
+O front end dessa aplicação se encontra neste link [upd8forntend](https://github.com/SaorCampos/upd8_front).
+
 ### Aplicação Web desenvolvida com:<br />
 
 -   Laravel 10x/PHP 8.1x<br />
