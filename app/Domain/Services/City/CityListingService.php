@@ -2,11 +2,10 @@
 
 namespace App\Domain\Services\City;
 
-use App\Core\ApplicationModels\Pagination;
-use App\Core\ApplicationModels\PaginatedList;
 use App\Core\Repositories\ICityRepository;
 use App\Core\Services\City\ICityListingService;
 use App\Http\Requests\City\CityListingRequest;
+use Illuminate\Support\Collection;
 
 class CityListingService implements ICityListingService
 {
@@ -15,8 +14,8 @@ class CityListingService implements ICityListingService
     )
     {}
 
-    public function listAll(CityListingRequest $request, Pagination $pagination): PaginatedList
+    public function listAll(CityListingRequest $request): Collection
     {
-        return $this->cityRepository->listAll($request, $pagination);
+        return $this->cityRepository->listAll($request);
     }
 }

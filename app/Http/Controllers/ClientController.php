@@ -20,9 +20,7 @@ class ClientController extends Controller
         private IClientCreateService $clientCreateService,
         private IClientUpdateService $clientUpdateService,
         private IClientDeleteService $clientDeleteService,
-    )
-    {
-    }
+    ) {}
 
     public function findAllCLients(ClientListingRequest $request): Response
     {
@@ -74,10 +72,17 @@ class ClientController extends Controller
     }
     public function deleteClient(int $id): Response
     {
-        $this->clientDeleteService->delete($id);
-        return BaseResponse::builder()
-            ->setMessage('Client deleted successfully')
-            ->setStatusCode(200)
-            ->response();
+        $bool = $this->clientDeleteService->delete($id);
+        if (!$bool) {
+            return BaseResponse::builder()
+                ->setMessage('Client not found')
+                ->setStatusCode(404)
+                ->response();
+        } else {
+            return BaseResponse::builder()
+                ->setMessage('Client deleted successfully')
+                ->setStatusCode(200)
+                ->response();
+        }
     }
 }

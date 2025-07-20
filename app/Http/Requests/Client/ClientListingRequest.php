@@ -25,6 +25,7 @@ class ClientListingRequest extends BaseRequest
             'gender' => ['string', 'in:MASCULINO,FEMININO'],
             'city' => 'string',
             'state' => 'string',
+            'date_birth' => 'date'
         ];
     }
 }

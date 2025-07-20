@@ -2,26 +2,24 @@
 
 namespace App\Data\Repositories;
 
-use App\Core\ApplicationModels\PaginatedList;
-use App\Core\ApplicationModels\Pagination;
 use App\Core\Dtos\CityDto;
 use App\Core\Repositories\ICityRepository;
 use App\Http\Requests\City\CityListingRequest;
 use App\Models\City;
+use Illuminate\Support\Collection;
 
 class CityRepository implements ICityRepository
 {
-    public function listAll(CityListingRequest $request, Pagination $pagination): PaginatedList
+    public function listAll(CityListingRequest $request): Collection
     {
-        $query = City::query()
+        $resultCollection = City::query()
             ->where($this->getFilters($request))
             ->orderBy('city_name')
-            ->paginate($pagination->perPage, ['*'], 'page', $pagination->page);
-        return PaginatedList::fromPaginatedQuery(
-            query: $query,
-            pagination: $pagination,
-            dtoClass: CityDto::class
-        );
+            ->get();
+        foreach ($resultCollection as $key => $row) {
+            $resultCollection[$key] = $row->mapTo(CityDto::class);
+        }
+        return $resultCollection;
     }
     private function getFilters(CityListingRequest $request): array
     {

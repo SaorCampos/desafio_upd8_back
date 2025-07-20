@@ -20,10 +20,7 @@ class CityController extends Controller
     public function listAll(CityListingRequest $request): Response
     {
         try {
-            $cities = $this->cityListingService->listAll(
-            request: $request,
-            pagination: Pagination::createFromRequest($request)
-        );
+            $cities = $this->cityListingService->listAll($request);
         return BaseResponse::builder()
             ->setData($cities)
             ->setMessage('Cities listed successfully')

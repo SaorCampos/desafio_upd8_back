@@ -2,11 +2,10 @@
 
 namespace App\Core\Services\City;
 
-use App\Core\ApplicationModels\PaginatedList;
-use App\Core\ApplicationModels\Pagination;
 use App\Http\Requests\City\CityListingRequest;
+use Illuminate\Support\Collection;
 
 interface ICityListingService
 {
-    public function listAll(CityListingRequest $request, Pagination $pagination): PaginatedList;
+    public function listAll(CityListingRequest $request): Collection;
 }

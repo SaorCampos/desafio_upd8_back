@@ -52,6 +52,9 @@ class ClientRepository implements IClientRepository
         if (!is_null($request->sex)) {
             $filters[] = ['c.sex', '=', $request->sex];
         }
+        if (!is_null($request->date_birth)) {
+            $filters[] = ['c.date_birth', '=', $request->date_birth];
+        }
         return $filters;
     }
     public function findClientById(int $id): ?ClientDto

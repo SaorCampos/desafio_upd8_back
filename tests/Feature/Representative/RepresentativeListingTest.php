@@ -25,12 +25,8 @@ class RepresentativeListingTest extends TestCase
         $user = User::factory()->createOne();
         $this->actingAs($user, 'jwt');
         RepresentativeClient::factory()->count($this->count)->create();
-        $data = [
-            'page' => 1,
-            'perPage' => 10,
-        ];
         // Act
-        $response = $this->postJson('api/representatives/', $data);
+        $response = $this->get('api/representatives/?page=1&perPage=10');
         $responseBody = json_decode($response->getContent(), true);
         // Assert
         $response->assertStatus(200);
